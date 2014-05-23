@@ -1,0 +1,53 @@
+<html>
+<meta charset="utf-8">
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script src="http://rawgithub.com/markmarkoh/datamaps/master/dist/datamaps.none.min.js"></script>
+<div id="afghan" style="height: 500px; width: 900px;"></div>
+<script>
+  var map = new Datamap({
+    element: document.getElementById('afghan'),
+    geographyConfig: {
+      dataUrl: 'https://dl.dropboxusercontent.com/s/3r0bgg96ymxwf4q/afg.json'
+    },
+    scope: 'afghan',
+    setProjection: function(element) {
+      var projection = d3.geo.mercator()
+        .center([66.166667, 34.4444])
+        .scale(2200)
+        .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+ 
+       var path = d3.geo.path().projection(projection);
+       return {path: path, projection: projection};
+    }
+  });
+</script>
+
+<div id="nie" style="height: 500px; width: 900px;"></div>
+<script>
+  var map = new Datamap({
+    element: document.getElementById('layer1'),
+    geographyConfig: {
+      dataUrl: 'https://dl.dropboxusercontent.com/s/suk6yovdqn36szp/nigeria_lga_current_052314.json'
+    },
+    scope: 'layer1',
+    setProjection: function(element) {
+      var projection = d3.geo.mercator()
+        .center([66.166667, 34.4444])
+        .scale(2200)
+        .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+ 
+       var path = d3.geo.path().projection(projection);
+       return {path: path, projection: projection};
+    }
+  });
+</script>
+
+</body>
+</html>
+
+
+<!--
+'https://gist.githubusercontent.com/markmarkoh/8856417/raw/6178d18115d9f273656d294a867c3f83b739a951/customAfghanMap.topo.json'
+"https://dl.dropboxusercontent.com/s/suk6yovdqn36szp/nigeria_lga_current_052314.json"
